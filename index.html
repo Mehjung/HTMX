@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HTMX Calc Example</title>
-    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+  <title>Fetch API Test</title>
 </head>
 <body>
 
-<form hx-post="https://651db29a6119e6dbedb6.appwrite.global" hx-trigger="submit">
-    <label for="num1">Number 1:</label>
-    <input type="text" id="num1" name="num1">
-    <label for="num2">Number 2:</label>
-    <input type="text" id="num2" name="num2">
-    <input type="submit" value="Calculate">
-</form>
+  <h1>Fetch API Test</h1>
+
+  <button id="fetchButton">Run Fetch Test</button>
+
+  <script>
+    document.getElementById("fetchButton").addEventListener("click", function() {
+      fetch('https://651db29a6119e6dbedb6.appwrite.global/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'num1=3&num2=4'
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
 
 </body>
 </html>

@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Appwrite Fetch Example</title>
+  <title>Appwrite List Users Example</title>
 </head>
 <body>
 
-  <form id="calcForm">
-    <label for="num1">Number 1:</label>
-    <input type="text" id="num1" name="num1">
-    <label for="num2">Number 2:</label>
-    <input type="text" id="num2" name="num2">
-    <input type="submit" value="Calculate">
-  </form>
+  <button id="listUsers">List Users</button>
 
   <script>
-    document.getElementById("calcForm").addEventListener("submit", function(event) {
-      // Prevent the default form submission
-      event.preventDefault();
-
-      // Get form values
-      const num1 = document.getElementById("num1").value;
-      const num2 = document.getElementById("num2").value;
-
+    document.getElementById("listUsers").addEventListener("click", function() {
       // Perform the fetch request
-      fetch('https://cloud.appwrite.io/v1', {
-        method: 'POST',
+      fetch('https://appwrite.io/v1/users', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'X-Appwrite-Project': '651db0b904b7bb0c99a9',
-          'X-Appwrite-Key': '123',
+          'X-Appwrite-Key': '123'
           // Add other headers as needed
-        },
-        body: JSON.stringify({ num1, num2 })
+        }
       })
       .then(response => response.json())
       .then(data => {

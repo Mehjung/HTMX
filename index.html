@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTMX Calc Example</title>
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+</head>
+<body>
+
+<form hx-post="http://651d8d63bb9b84fdfe8c.appwrite.global" hx-trigger="submit">
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1" name="num1">
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2" name="num2">
+    <input type="submit" value="Calculate">
+</form>
+
+</body>
+</html>

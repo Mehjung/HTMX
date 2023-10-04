@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fetch API Test</title>
+  <title>Appwrite Fetch Example</title>
 </head>
 <body>
 
-  <h1>Fetch API Test</h1>
-
-  <button id="fetchButton">Run Fetch Test</button>
+  <form id="calcForm">
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1" name="num1">
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2" name="num2">
+    <input type="submit" value="Calculate">
+  </form>
 
   <script>
-fetch('https://651db29a6119e6dbedb6.appwrite.global/', {
-  method: 'POST', // or GET, depending on your needs
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Appwrite-Project': '651db0b904b7bb0c99a9',
-    'X-Appwrite-Key': '2ddda2c016a724de1e7eba87c530ec8bc2da2242a7e4cbe66e3c2a8d40f46e1b38310cde104f4f9fc805b6ca9bc54d4f78388165e9e35fe7ecdda950efed17c4c34beb7782742ac38acbd640d91a7aff17a5dab893858fbc427fba2fd86d44a2294e273e2aba546ffb1e7216ed2311b2a4d442ed0f8c887ac98ca8f949436ea5',
-    // Add other headers as needed
-  },
-  body: JSON.stringify({ num1: 3, num2: 4 }) // Only for POST, adjust the payload as needed
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+    document.getElementById("calcForm").addEventListener("submit", function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
 
+      // Get form values
+      const num1 = document.getElementById("num1").value;
+      const num2 = document.getElementById("num2").value;
+
+      // Perform the fetch request
+      fetch('https://651db29a6119e6dbedb6.appwrite.global/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Appwrite-Project': '651db0b904b7bb0c99a9',
+          'X-Appwrite-Key': '123',
+          // Add other headers as needed
+        },
+        body: JSON.stringify({ num1, num2 })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+    });
   </script>
 
 </body>
